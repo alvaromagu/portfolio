@@ -12,8 +12,8 @@
 		"lint": "eslint"
 	},
 	"dependencies": {
-		"@astrojs/tailwind": "5.1.0",
-		"astro": "4.11.0"
+		"@astrojs/tailwind": "5.1.2",
+		"astro": "4.16.5"
 	},
 	"devDependencies": {
 		"@typescript-eslint/parser": "7.13.1",
