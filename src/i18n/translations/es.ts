@@ -18,7 +18,7 @@ export const es = {
   'projects.cw.game': 'El juego de la vida de Conway',
   'projects.wallhaven': 'Wallhaven',
   'projects.bg.remover': 'Eliminar fondo de imágenes',
-  'projects.pokeapp': 'App to search for pokemons',
+  'projects.pokeapp': 'Apliación de Pokémon',
   'projects.tpv': 'TPV',
   'projects.padel': 'Gestión de pistas de pádel',
   'projects.see.more': 'Ver más projectos',
