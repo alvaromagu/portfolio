@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+
+@theme {
+  --text-color-primary: var(--text-primary);
+  --text-color-secondary: var(--text-secondary);
+  --text-color-link-hover: var(--text-link-hover);
+
+  --background-color-primary: rgba(var(--bg-primary));
+  --background-color-primary-blur: var(--bg-primary-blur);
+  --background-color-on-primary: var(--bg-on-primary);
+  --background-color-code: var(--bg-code);
+
+  --border-color-primary: var(--border-primary);
+  --border-color-code: var(--border-code);
+  --border-color-on-primary: var(--border-on-primary);
+}

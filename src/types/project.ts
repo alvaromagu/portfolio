@@ -1,4 +1,4 @@
-export const enum Tecnology {
+export enum Tecnology {
   Github = '/icons/github.svg',
   Angular = '/icons/angular.svg',
   HTML = '/icons/html.svg',

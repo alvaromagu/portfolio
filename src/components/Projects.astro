@@ -1,9 +1,9 @@
 ---
+import { getProjects } from '../constants/projects'
+import { type Locale, useTranslation } from '../i18n/i18n'
+import Link from './Link.astro'
 import Project from './Project.astro'
 import SectionTitle from './SectionTitle.astro'
-import { useTranslation, type Locale } from '../i18n/i18n'
-import Link from './Link.astro'
-import { getProjects } from '../constants/projects'
 
 const currentLocale = Astro.currentLocale as Locale
 const t = useTranslation(currentLocale)
@@ -12,7 +12,7 @@ const projects = getProjects(t)
 
 <section id='projects' class='flex flex-col gap-5 min-h-screen'>
   <SectionTitle>{t('projects.title')}</SectionTitle>
-  <ul class='grid grid-cols-1 gap-4'>
+  <ul class='grid grid-cols-2 gap-4'>
     {
       projects.map((project) => (
         <li>

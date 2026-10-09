@@ -1,7 +1,7 @@
 ---
+import { type Locale, useTranslation } from '../i18n/i18n'
 import type { ProjectI } from '../types/project'
 import Github from './icons/Github.astro'
-import { useTranslation, type Locale } from '../i18n/i18n'
 import Link from './Link.astro'
 import ThemedImage from './ThemedImage.astro'
 
@@ -15,14 +15,14 @@ const currentLocale = Astro.currentLocale as Locale
 const t = useTranslation(currentLocale)
 ---
 
-<article class='group flex overflow-hidden h-72 relative shadow-lg rounded-sm'>
+<article class='group flex overflow-hidden relative shadow-lg rounded-xs'>
   <Link
     target='_blank'
     href={project.web ?? project.github}
     class='hover:text-inherit w-full'
   >
     <ThemedImage
-      class='group-hover:scale-105 h-72 w-full object-cover transition-transform ease-in'
+      class='group-hover:scale-105 w-full object-cover transition-transform ease-in'
       alt={project.name}
       dark={project.image.dark}
       light={project.image.light}

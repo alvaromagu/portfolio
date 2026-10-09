@@ -1,12 +1,13 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
 
-type Props = Omit<HTMLAttributes<'img'>, 'src'> & {
+type Props = Omit<HTMLAttributes<'img'>, 'src' | 'alt'> & {
+  alt: string
   light: string
   dark: string
 }
 
-const { light, dark, ...props } = Astro.props
+const { light, dark, alt, ...props } = Astro.props
 ---
 <picture>
   <source
@@ -16,5 +17,6 @@ const { light, dark, ...props } = Astro.props
   <img
     {...props}
     src={light}
+    alt={alt}
   />
 </picture>

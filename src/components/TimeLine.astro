@@ -1,6 +1,6 @@
 ---
+import { type Locale, useTranslation } from '../i18n/i18n'
 import SectionTitle from './SectionTitle.astro'
-import { useTranslation, type Locale } from '../i18n/i18n'
 
 const currentLocale = Astro.currentLocale as Locale
 const t = useTranslation(currentLocale)

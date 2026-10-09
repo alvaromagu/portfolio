@@ -1,5 +1,6 @@
 ---
-import { useTranslation, type Locale } from '../i18n/i18n'
+import '../styles/global.css'
+import { type Locale, useTranslation } from '../i18n/i18n'
 
 const currentLocale = Astro.currentLocale as Locale
 const t = useTranslation(currentLocale)
@@ -46,7 +47,7 @@ const t = useTranslation(currentLocale)
   }
 
   :root {
-    font-family: 'Onest';
+    font-family: 'Onest', sans-serif;
     color-scheme: light dark;
     scroll-behavior: smooth;
     --app-bar-height: 60px;

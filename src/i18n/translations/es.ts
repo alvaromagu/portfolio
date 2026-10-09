@@ -24,18 +24,24 @@ export const es = {
   'projects.see.more': 'Ver más projectos',
   'experience.title': 'Experiencia',
   'experience.i2e.title': 'Ingenieria Informática Empresarial (I2E)',
-  'experience.i2e.description': 'Desarrollo fullstack (java + angular) de un software bancario. Desarrollo de microservicios y microfrontends para la migración de un sistema monolítico a una arquitectura escalable y mantenible.',
+  'experience.i2e.description':
+    'Desarrollo fullstack (java + angular) de un software bancario. Desarrollo de microservicios y microfrontends para la migración de un sistema monolítico a una arquitectura escalable y mantenible.',
   'experience.i2e.time': 'Abril 2024 - Actualidad',
   'experience.sime.title': 'Sime',
-  'experience.sime.description': 'Desarrollo fullstack (java + angular) de un software de reservas para hoteles y apartamentos turísticos. Puesta en producción de las primeras versiones del sistema.',
+  'experience.sime.description':
+    'Desarrollo fullstack (java + angular) de un software de reservas para hoteles y apartamentos turísticos. Puesta en producción de las primeras versiones del sistema.',
   'experience.sime.time': 'Marzo 2022 - Septiembre 2023',
-  'experience.dam.title': 'Grado Superior de Desarrollo de Aplicaciones Multiplataforma',
-  'experience.dam.description': 'Aprendizaje de las bases de la programación y del desarrollo de aplicaciones multiplataforma. Desarrollo de aplicaciones web, móviles y de escritorio.',
+  'experience.dam.title':
+    'Grado Superior de Desarrollo de Aplicaciones Multiplataforma',
+  'experience.dam.description':
+    'Aprendizaje de las bases de la programación y del desarrollo de aplicaciones multiplataforma. Desarrollo de aplicaciones web, móviles y de escritorio.',
   'experience.dam.time': 'Septiembre 2020 - Junio 2022',
   'aria.label.link.github': 'Enlace a Github',
   'aria.label.link.linkedin': 'Enlace a Linkedin',
   'aria.label.link.github.project': 'Enlace al proyecto en Github',
   'aria.label.link.projects': 'Enlace a proyectos',
   'aria.label.button.theme': 'Cambiar tema',
-  'aria.label.button.contact': 'Contactar'
+  'aria.label.button.contact': 'Contactar',
+  'aria.label.link.language': 'View in English',
+  'aria.label.button.menu': 'Abrir menú'
 } as const

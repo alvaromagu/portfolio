@@ -1,6 +1,6 @@
 ---
+import { type Locale, useTranslation } from '../i18n/i18n'
 import Hamburguer from './icons/Hamburguer.astro'
-import { useTranslation, type Locale } from '../i18n/i18n'
 import Language from './Language.astro'
 import Link from './Link.astro'
 
@@ -10,9 +10,9 @@ const cv = `/documents/cv-${currentLocale}.pdf`
 ---
 
 <header
-  class='p-3 h-[var(--app-bar-height)] flex items-center justify-between border-b-[1px] border-primary border-solid top-0 w-full max-w-[900px] m-auto fixed z-10 backdrop-blur-sm gap-3 bg-primary-blur'
+  class='p-3 h-[var(--app-bar-height)] flex items-center justify-between border-b-[1px] border-primary border-solid top-0 w-full max-w-[900px] m-auto fixed z-10 backdrop-blur-xs gap-3 bg-primary-blur'
 >
-  <code class='font-bold bg-code rounded py-1 px-2'>
+  <code class='font-bold bg-code rounded-sm py-1 px-2'>
     &#60;/alvaro&#62;
   </code>
   <input class='hidden' type='checkbox' id='ham' name='ham' />
@@ -38,6 +38,7 @@ const cv = `/documents/cv-${currentLocale}.pdf`
   </nav>
   <label
     for='ham'
+    aria-label={t('aria.label.button.menu')}
     class='sm:hidden cursor-pointer flex-1 flex justify-end items-center'
   >
     <Hamburguer width='24px' height='24px' />
