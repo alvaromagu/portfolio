@@ -1,16 +1,91 @@
 @import 'tailwindcss';
 
-@theme {
-  --text-color-primary: var(--text-primary);
-  --text-color-secondary: var(--text-secondary);
-  --text-color-link-hover: var(--text-link-hover);
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
 
-  --background-color-primary: rgba(var(--bg-primary));
-  --background-color-primary-blur: var(--bg-primary-blur);
-  --background-color-on-primary: var(--bg-on-primary);
-  --background-color-code: var(--bg-code);
+@theme inline {
+  --font-sans: 'Onest', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
-  --border-color-primary: var(--border-primary);
-  --border-color-code: var(--border-code);
-  --border-color-on-primary: var(--border-on-primary);
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-edge: var(--edge);
+  --color-surface: var(--surface);
+  --color-accent: var(--accent);
+}
+
+@utility wrap {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: clamp(20px, 4vw, 40px);
+}
+
+@utility link-underline {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 1px;
+  }
+}
+
+@font-face {
+  font-family: 'Onest';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(/fonts/onest.woff2) format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url(/fonts/jetbrains-mono.woff2) format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  color-scheme: light;
+  scroll-behavior: smooth;
+  --bg: #f5f4f0;
+  --fg: #151515;
+  --muted: #5c5a55;
+  --line: #dedbd4;
+  --edge: #c9c6be;
+  --surface: #eae8e2;
+  --accent: #c27c12;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0f1010;
+  --fg: #eceae4;
+  --muted: #9a978f;
+  --line: #262725;
+  --edge: #3a3b38;
+  --surface: #171817;
+  --accent: #e8a33d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    scroll-behavior: auto;
+  }
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
 }

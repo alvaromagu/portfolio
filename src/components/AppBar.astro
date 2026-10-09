@@ -1,63 +1,109 @@
 ---
 import { type Locale, useTranslation } from '../i18n/i18n'
-import Hamburguer from './icons/Hamburguer.astro'
-import Language from './Language.astro'
-import Link from './Link.astro'
+import Icon from './Icon.astro'
 
 const currentLocale = Astro.currentLocale as Locale
 const t = useTranslation(currentLocale)
 const cv = `/documents/cv-${currentLocale}.pdf`
+const languageLink = currentLocale === 'es' ? '/en' : '/'
+const navLink =
+  'link-underline inline-flex items-center min-h-11 px-3 max-sm:min-h-12 max-sm:px-0 max-sm:text-lg'
 ---
 
-<header
-  class='p-3 h-[var(--app-bar-height)] flex items-center justify-between border-b-[1px] border-primary border-solid top-0 w-full max-w-[900px] m-auto fixed z-10 backdrop-blur-xs gap-3 bg-primary-blur'
->
-  <code class='font-bold bg-code rounded-sm py-1 px-2'>
-    &#60;/alvaro&#62;
-  </code>
-  <input class='hidden' type='checkbox' id='ham' name='ham' />
-  <nav
-    class='flex-1 max-sm:bg-primary max-sm:absolute max-sm:top-[var(--app-bar-height)] max-sm:bottom-0 max-sm:left-0 max-sm:right-0 max-sm:h-[calc(100vh-var(--app-bar-height))] max-sm:pt-5 max-sm:opacity-95'
-  >
-    <ul
-      class='flex gap-3 items-center sm:justify-end justify-center max-sm:flex-col'
+<header id='app-bar' class='group absolute inset-x-0 top-0 z-10 max-sm:data-open:bg-bg'>
+  <div class='wrap flex items-center justify-between gap-6 py-[18px]'>
+    <a
+      href='#top'
+      aria-label={t('aria.label.link.home')}
+      class='inline-flex items-center gap-2.5 min-h-11 font-semibold text-[15px] hover:opacity-70 transition-opacity'
     >
-      <li>
-        <Link href='#top' class='font-semibold'>{t('nav.home')}</Link>
-      </li>
-      <li>
-        <Link href='#timeLine' class='font-semibold'>{t('nav.experience')}</Link>
-      </li>
-      <li>
-        <Link href='#projects' class='font-semibold'>{t('nav.projects')}</Link>
-      </li>
-      <li>
-        <Link target='_blank' href={cv} class='font-semibold'>{t('nav.cv')}</Link>
-      </li>
-    </ul>
-  </nav>
-  <label
-    for='ham'
-    aria-label={t('aria.label.button.menu')}
-    class='sm:hidden cursor-pointer flex-1 flex justify-end items-center'
-  >
-    <Hamburguer width='24px' height='24px' />
-  </label>
-  <Language />
+      <svg width='18' height='18' viewBox='0 0 3 3' aria-hidden='true' class='fill-current'>
+        <rect x='1' y='0' width='0.86' height='0.86'></rect>
+        <rect x='2' y='1' width='0.86' height='0.86'></rect>
+        <rect x='0' y='2' width='0.86' height='0.86'></rect>
+        <rect x='1' y='2' width='0.86' height='0.86'></rect>
+        <rect x='2' y='2' width='0.86' height='0.86'></rect>
+      </svg>
+      <span>Álvaro Martínez</span>
+    </a>
+
+    <button
+      type='button'
+      id='menu-toggle'
+      aria-label={t('nav.menu')}
+      aria-expanded='false'
+      aria-controls='main-nav'
+      class='sm:hidden inline-flex items-center justify-center size-11 -mr-2.5 cursor-pointer'
+    >
+      <Icon name='menu' size={22} class='group-data-open:hidden' />
+      <Icon name='x' size={22} class='hidden group-data-open:block' />
+    </button>
+
+    <nav
+      id='main-nav'
+      aria-label={t('nav.label')}
+      class='flex items-center gap-0.5 text-[15px] max-sm:hidden max-sm:group-data-open:flex max-sm:absolute max-sm:inset-x-0 max-sm:top-full max-sm:flex-col max-sm:items-stretch max-sm:gap-0 max-sm:px-[clamp(20px,4vw,40px)] max-sm:pb-4 max-sm:bg-bg max-sm:border-b max-sm:border-line'
+    >
+      <a href='#projects' class={navLink}>{t('nav.projects')}</a>
+      <a href='#experience' class={navLink}>{t('nav.experience')}</a>
+      <a href={cv} target='_blank' class={navLink}>{t('nav.cv')}</a>
+      <a
+        href={languageLink}
+        aria-label={t('aria.label.link.language')}
+        class={`${navLink} sm:font-mono sm:text-[13px] text-muted`}
+      >
+        <span class='max-sm:hidden'>{t('nav.language')}</span>
+        <span class='sm:hidden'>{t('nav.language.full')}</span>
+      </a>
+      <button
+        type='button'
+        id='theme-toggle'
+        aria-label={t('aria.label.button.theme')}
+        class='inline-flex items-center justify-center gap-3 size-11 cursor-pointer hover:opacity-70 transition-opacity max-sm:w-auto max-sm:h-12 max-sm:justify-start max-sm:text-lg'
+      >
+        <Icon name='sun' class='hidden dark:block' />
+        <Icon name='moon' class='dark:hidden' />
+        <span class='sm:hidden'>{t('nav.theme')}</span>
+      </button>
+    </nav>
+  </div>
 </header>
 
-<style>
-  @media (max-width: 639px) {
-    #ham + nav {
-      transform: translateX(-100%);
-      transition: transform 0.3s;
-    }
+<script>
+  const root = document.documentElement
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark'
+    root.dataset.theme = next
+    try {
+      localStorage.setItem('theme', next)
+    } catch {}
+  })
 
-    #ham:checked + nav {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      transform: translateX(0);
-    }
+  const header = document.getElementById('app-bar')
+  const menuToggle = document.getElementById('menu-toggle')
+  const nav = document.getElementById('main-nav')
+
+  const setMenu = (open: boolean) => {
+    header?.toggleAttribute('data-open', open)
+    menuToggle?.setAttribute('aria-expanded', String(open))
   }
-</style>
+
+  menuToggle?.addEventListener('click', () => {
+    setMenu(!header?.hasAttribute('data-open'))
+  })
+  nav?.addEventListener('click', (e) => {
+    if ((e.target as Element).closest('a')) setMenu(false)
+  })
+  document.addEventListener('click', (e) => {
+    if (header && !header.contains(e.target as Node)) setMenu(false)
+  })
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && header?.hasAttribute('data-open')) {
+      setMenu(false)
+      menuToggle?.focus()
+    }
+  })
+  matchMedia('(min-width: 640px)').addEventListener('change', (e) => {
+    if (e.matches) setMenu(false)
+  })
+</script>

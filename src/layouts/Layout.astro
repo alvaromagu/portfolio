@@ -27,52 +27,23 @@ const t = useTranslation(currentLocale)
     <meta name='twitter:image' content={t('og.image')} />
 
     <link rel='icon' type='image/svg+xml' href='/icons/favicon.svg' />
+    <link rel='preload' href='/fonts/onest.woff2' as='font' type='font/woff2' crossorigin />
     <title>{t('title')}</title>
+
+    <script is:inline>
+      ;(() => {
+        let theme = null
+        try {
+          theme = localStorage.getItem('theme')
+        } catch {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+        }
+        document.documentElement.dataset.theme = theme
+      })()
+    </script>
   </head>
-  <body
-    class='relative max-w-[900px] m-auto text-primary bg-primary'
-  >
+  <body class='bg-bg text-fg font-sans antialiased'>
     <slot />
   </body>
 </html>
-
-<style is:global>
-  @font-face {
-    font-family: 'Onest';
-    font-style: normal;
-    font-weight: 100 900;
-    font-display: swap;
-    src: url(/fonts/onest.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-
-  :root {
-    font-family: 'Onest', sans-serif;
-    color-scheme: light dark;
-    scroll-behavior: smooth;
-    --app-bar-height: 60px;
-    --text-primary: black;
-    --text-secondary: #626262;
-    --text-link-hover: #0d5dc1;
-    --bg-primary: 246, 246, 246;
-    --bg-primary-blur: rgba(var(--bg-primary), 0.9);
-    --bg-on-primary: #e5e5e5;
-    --bg-code: #7c3aed25;
-    --border-primary: #e0e0e0;
-    --border-on-primary: #e0e0e0;
-    --border-code: #7c3aed;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --text-primary: #e0dfdf;
-      --text-secondary: #d5c5c5;
-      --text-link-hover: #4497ff;
-      --bg-primary: 44, 51, 51;
-      --bg-primary-blur: #2c3333e0;
-      --bg-on-primary: #282828;
-      --border-primary: #e0e0e0;
-      --border-on-primary: #282828;
-    }
-  }
-</style>

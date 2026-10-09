@@ -11,7 +11,7 @@ export const getProjects = (t: TFn): ProjectI[] => {
         dark: '/images/iallm-dark.webp',
         light: '/images/iallm-light.webp'
       },
-      technologies: [Tecnology.React]
+      technologies: [Tecnology.React, Tecnology.WebGPU]
     },
     {
       name: t('projects.bg.remover'),

@@ -1,20 +1,20 @@
 ---
 import AppBar from '../components/AppBar.astro'
+import Experience from '../components/Experience.astro'
 import Footer from '../components/Footer.astro'
-import Home from '../components/Home.astro'
+import Hero from '../components/Hero.astro'
 import Projects from '../components/Projects.astro'
-import TimeLine from '../components/TimeLine.astro'
 import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout>
-  <AppBar />
-  <main class='p-3 mt-[var(--app-bar-height)] flex flex-col gap-10'>
-    <Home />
-    <TimeLine />
-    <Projects />
-  </main>
-  <Footer />
+  <div id='top' class='relative'>
+    <AppBar />
+    <main>
+      <Hero />
+      <Projects />
+      <Experience />
+    </main>
+    <Footer />
+  </div>
 </Layout>
-
-<style></style>

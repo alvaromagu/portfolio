@@ -1,0 +1,89 @@
+---
+import { type Locale, useTranslation } from '../i18n/i18n'
+import Icon from './Icon.astro'
+
+const currentLocale = Astro.currentLocale as Locale
+const t = useTranslation(currentLocale)
+const button =
+  'inline-flex items-center gap-2 min-h-11 px-4 border border-edge rounded-md text-[15px] hover:opacity-70 transition-opacity'
+---
+
+<section
+  id='hero'
+  class='relative flex flex-col h-svh min-h-[640px] max-h-[1100px] border-b border-line overflow-hidden'
+>
+  <div class='relative flex-1 min-h-0 cursor-crosshair'>
+    <canvas
+      id='life'
+      data-lines='ÁLVARO|MARTÍNEZ'
+      aria-hidden='true'
+      class='absolute inset-0 size-full block touch-pan-y'
+    ></canvas>
+    <h1 class='sr-only'>{t('hero.title')}</h1>
+  </div>
+
+  <div class='relative z-[1] border-t border-line bg-bg'>
+    <div
+      class='wrap flex flex-wrap justify-between items-end gap-x-12 gap-y-7 pt-7 pb-8'
+    >
+      <div class='flex flex-col gap-3.5 flex-[1_1_420px] max-w-[560px]'>
+        <p class='text-[26px] font-semibold tracking-tight leading-tight'>
+          {t('hero.role')}
+        </p>
+        <p class='text-muted leading-relaxed'>{t('hero.summary')}</p>
+        <div class='flex flex-wrap gap-2 pt-1'>
+          <a href='https://github.com/alvaromagu' target='_blank' class={button}>
+            <Icon name='github' size={17} />
+            GitHub
+          </a>
+          <a href='https://www.linkedin.com/in/alvaromagu/' target='_blank' class={button}>
+            <Icon name='linkedin' size={17} />
+            LinkedIn
+          </a>
+          <a href='mailto:alvaromagu2002@gmail.com' class={button}>
+            <Icon name='mail' size={17} />
+            {t('hero.contact')}
+          </a>
+        </div>
+      </div>
+
+      <div class='flex flex-col gap-1.5 font-mono text-xs leading-normal text-muted flex-[0_1_360px]'>
+        <div class='flex gap-5 text-fg' aria-hidden='true'>
+          <span>{t('hero.generation')} <span id='life-gen'>00000</span></span>
+          <span>{t('hero.cells')} <span id='life-pop'>0000</span></span>
+          <span>B3/S23</span>
+        </div>
+        <p>{t('hero.hint')}</p>
+        <a
+          href='https://alvaromg-cg.vercel.app/'
+          target='_blank'
+          class='link-underline inline-flex items-center gap-1.5 min-h-8'
+        >
+          {t('hero.based.on')}
+          <Icon name='arrow-up-right' size={13} />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { startLife } from '../lib/life'
+
+  const canvas = document.getElementById('life') as HTMLCanvasElement | null
+  const hero = document.getElementById('hero')
+  const genEl = document.getElementById('life-gen')
+  const popEl = document.getElementById('life-pop')
+
+  if (canvas && hero) {
+    startLife({
+      canvas,
+      hero,
+      lines: (canvas.dataset.lines ?? '').split('|'),
+      onStats: (gen, pop) => {
+        if (genEl) genEl.textContent = String(gen).padStart(5, '0')
+        if (popEl) popEl.textContent = String(pop).padStart(4, '0')
+      }
+    })
+  }
+</script>

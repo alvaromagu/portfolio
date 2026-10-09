@@ -1,33 +1,74 @@
 ---
 import { getProjects } from '../constants/projects'
 import { type Locale, useTranslation } from '../i18n/i18n'
-import Link from './Link.astro'
-import Project from './Project.astro'
-import SectionTitle from './SectionTitle.astro'
+import Icon from './Icon.astro'
+import SectionHeader from './SectionHeader.astro'
+import ThemedImage from './ThemedImage.astro'
 
 const currentLocale = Astro.currentLocale as Locale
 const t = useTranslation(currentLocale)
 const projects = getProjects(t)
+const smallLink =
+  'link-underline inline-flex items-center gap-1 min-h-11 px-2 text-sm'
 ---
 
-<section id='projects' class='flex flex-col gap-5 min-h-screen'>
-  <SectionTitle>{t('projects.title')}</SectionTitle>
-  <ul class='grid grid-cols-2 gap-4'>
+<section id='projects' class='wrap pt-28 pb-6'>
+  <SectionHeader index='01' title={t('projects.title')}>
+    <a
+      href='https://github.com/alvaromagu?tab=repositories'
+      target='_blank'
+      class='link-underline inline-flex items-center gap-1.5 min-h-11 text-[15px]'
+    >
+      {t('projects.see.more')}
+      <Icon name='arrow-up-right' size={15} />
+    </a>
+  </SectionHeader>
+
+  <ul
+    class='grid grid-cols-[repeat(auto-fill,minmax(min(100%,340px),1fr))] gap-x-8 gap-y-14 pt-10'
+  >
     {
-      projects.map((project) => (
-        <li>
-          <Project project={project} />
+      projects.map((project, i) => (
+        <li class='flex flex-col gap-3.5 min-w-0'>
+          <a
+            href={project.web ?? project.github}
+            target='_blank'
+            aria-label={`${t('aria.label.link.demo')} ${project.name}`}
+            class='group block aspect-[16/10] overflow-hidden rounded-md border border-line bg-surface' rel='noopener'
+          >
+            <ThemedImage
+              alt={`${t('projects.screenshot')} ${project.name}`}
+              dark={project.image.dark}
+              light={project.image.light}
+              loading='lazy'
+              class='size-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]'
+            />
+          </a>
+          <div class='flex justify-between items-baseline gap-3'>
+            <h3 class='text-lg font-semibold leading-snug'>{project.name}</h3>
+            <span class='font-mono text-xs text-muted'>
+              {String(i + 1).padStart(2, '0')}
+            </span>
+          </div>
+          <div class='flex flex-wrap justify-between items-center gap-3 -mt-2'>
+            <span class='font-mono text-xs text-muted'>
+              {project.technologies.join(' · ')}
+            </span>
+            <div class='flex gap-1'>
+              {project.web && (
+                <a href={project.web} target='_blank' class={smallLink} rel='noopener'>
+                  {t('projects.demo')}
+                  <Icon name='arrow-up-right' size={13} />
+                </a>
+              )}
+              <a href={project.github} target='_blank' class={`${smallLink} pr-0`} rel='noopener'>
+                {t('projects.code')}
+                <Icon name='arrow-up-right' size={13} />
+              </a>
+            </div>
+          </div>
         </li>
       ))
     }
   </ul>
-  <div class='flex justify-center'>
-    <Link
-      target='_blank'
-      href='https://github.com/alvaromagu?tab=repositories'
-      class='p-3 bg-on-primary rounded-md font-semibold'
-    >
-      {t('projects.see.more')}
-    </Link>
-  </div>
 </section>
