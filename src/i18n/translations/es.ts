@@ -15,7 +15,7 @@ export const es = {
   'hero.title': 'Álvaro Martínez, Fullstack Developer',
   'hero.role': 'Fullstack Developer',
   'hero.summary':
-    'Java, Angular y React. Ahora migro un software bancario de un monolito a microservicios y microfrontends en I2E.',
+    'Java, Angular y React. Ahora desarrollo software sanitario y bancario para Sanitas e Inversis en Tartis.',
   'hero.contact': 'Contactar',
   'hero.generation': 'GEN',
   'hero.cells': 'CÉLULAS',
@@ -34,10 +34,14 @@ export const es = {
   'projects.code': 'Código',
   'projects.screenshot': 'Captura de',
   'experience.title': 'Experiencia',
+  'experience.tartis.title': 'Tartis',
+  'experience.tartis.description':
+    'Desarrollo de aplicaciones para Sanitas (software sanitario) e Inversis (software bancario). Además, doy soporte técnico al resto de desarrolladores del equipo.',
+  'experience.tartis.time': 'Jul 2026 — Actualidad',
   'experience.i2e.title': 'Ingeniería Informática Empresarial (I2E)',
   'experience.i2e.description':
     'Desarrollo fullstack (Java + Angular) de un software bancario. Desarrollo de microservicios y microfrontends para migrar un sistema monolítico a una arquitectura escalable y mantenible.',
-  'experience.i2e.time': 'Abr 2024 — Actualidad',
+  'experience.i2e.time': 'Abr 2024 — Jul 2026',
   'experience.sime.title': 'Sime',
   'experience.sime.description':
     'Desarrollo fullstack (Java + Angular) de un software de reservas para hoteles y apartamentos turísticos. Puesta en producción de las primeras versiones del sistema.',
