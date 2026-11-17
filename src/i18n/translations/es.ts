@@ -15,7 +15,7 @@ export const es = {
   'hero.title': 'Álvaro Martínez, Fullstack Developer',
   'hero.role': 'Fullstack Developer',
   'hero.summary':
-    'Java, Angular y React. Ahora desarrollo software sanitario y bancario para Sanitas e Inversis en Tartis.',
+    'Java, Angular y React. Ahora desarrollo software sanitario, bancario y de gestión de prestaciones para Sanitas, Inversis e Ibermutua en Tartis.',
   'hero.contact': 'Contactar',
   'hero.generation': 'GEN',
   'hero.cells': 'CÉLULAS',
@@ -36,7 +36,7 @@ export const es = {
   'experience.title': 'Experiencia',
   'experience.tartis.title': 'Tartis',
   'experience.tartis.description':
-    'Desarrollo de aplicaciones para Sanitas (software sanitario) e Inversis (software bancario). Además, doy soporte técnico al resto de desarrolladores del equipo.',
+    'Desarrollo de aplicaciones para Sanitas (software sanitario) e Inversis (software bancario), donde además doy soporte técnico al resto de desarrolladores del equipo. Ahora también trabajo en un nuevo proyecto de Ibermutua para gestionar las prestaciones de la mutua.',
   'experience.tartis.time': 'Jul 2026 — Actualidad',
   'experience.i2e.title': 'Ingeniería Informática Empresarial (I2E)',
   'experience.i2e.description':

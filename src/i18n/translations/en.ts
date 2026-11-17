@@ -15,7 +15,7 @@ export const en = {
   'hero.title': 'Álvaro Martínez, Fullstack Developer',
   'hero.role': 'Fullstack Developer',
   'hero.summary':
-    'Java, Angular and React. Currently building healthcare and banking software for Sanitas and Inversis at Tartis.',
+    'Java, Angular and React. Currently building healthcare, banking and benefits management software for Sanitas, Inversis and Ibermutua at Tartis.',
   'hero.contact': 'Contact',
   'hero.generation': 'GEN',
   'hero.cells': 'CELLS',
@@ -36,7 +36,7 @@ export const en = {
   'experience.title': 'Experience',
   'experience.tartis.title': 'Tartis',
   'experience.tartis.description':
-    'Building applications for Sanitas (healthcare software) and Inversis (banking software). I also provide technical support to the other developers on the team.',
+    "Building applications for Sanitas (healthcare software) and Inversis (banking software), where I also provide technical support to the other developers on the team. I'm now also working on a new Ibermutua project to manage the mutual insurance company's benefits.",
   'experience.tartis.time': 'Jul 2026 — Present',
   'experience.i2e.title': 'Business Computer Engineering (I2E)',
   'experience.i2e.description':
